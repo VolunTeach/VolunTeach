@@ -1,6 +1,6 @@
 from app import app
 from app.forms import MatchForm
-from flask import Flask, url_for, render_template, redirect
+from flask import Flask, url_for, render_template, redirect, request
 from collections import defaultdict
 from datetime import datetime, time
 
@@ -19,10 +19,17 @@ def display_availabilities():
     form = MatchForm()
     client = mock_client_availabilities()
     tutors = mock_tutors_availabilities()
-    if form.validate_on_submit():
-        return redirect(url_for('success'))
+    if request.method == 'POST':
+        return redirect(url_for('display_match'))
 
     return render_template('available.jinja2', client=client, tutors=tutors, form=form, template='form-template')
+
+@app.route('/display_match', methods=('GET', 'POST'))
+def display_match():
+    client = mock_client_availabilities()
+    tutors = mock_tutors_availabilities()
+    matched_tutor = 'Tutor 1'
+    return render_template('matches.jinja2', matched_tutor=matched_tutor, tutors=tutors)
 
 def mock_client_availabilities():
     client = []
@@ -59,4 +66,3 @@ def mock_tutors_availabilities():
     tutors['Tutor 3'].append(['01:00:00', '05:00:00'])
 
     return tutors
-    
