@@ -18,4 +18,11 @@ class Account:
     def setAvail(self, avail):
         self.avail = avail
 
-    
+    def getName(self):
+        return self.name
+
+    def getEmail(self):
+        return self.email
+
+    def getAvail(self):
+        return self.avail    
