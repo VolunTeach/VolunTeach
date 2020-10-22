@@ -1,25 +1,23 @@
 #VolunTeach Tutoring Services
 
+from app.Account import Account
+from app.Subjects import Subjects
+
 #this class inherits Account
 class Tutor(Account):
 
     #constructors
     def __init__(self):
         super().__init__(self)
-        self.subjects = ""
         self.clients = ""
         maxHours = 0
 
     def __init__(self, name, email, avail, subjects, clients, maxHours):
         super().__init__(self, name, email, avail)
-        self.subjects = subjects
         self.clients = clients
         self.maxHours = maxHours
 
-    #setters
-    def setSubjects(self, subjects):
-        self.subjects = subjects
-    
+    #setters    
     def setClients(self, clients):
         self.clients = clients
         
@@ -27,9 +25,6 @@ class Tutor(Account):
         self.maxHours = maxHours
 
     #getters
-    def getSubjects(self):
-        return self.subjects
-
     def getClients(self):
         return self.clients
 
