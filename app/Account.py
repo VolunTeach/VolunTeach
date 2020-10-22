@@ -11,15 +11,17 @@ class Account(ABC):
     def __init__(self):
         self.name = ""
         self.email = ""
-        self.avail = [[0 for j in range(48)] for i in range(7)]
+        self.genAvail = [[0 for j in range(48)] for i in range(7)]
+        self.curAvail = self.genAvail
         self.subjects = Subjects()
         super().__init__()
 
-    def __init__(self, name, email, avail, subjects):
+    def __init__(self, name, email, genAvail):
         self.name = name
         self.email = email
-        self.avail = avail
-        self.subjects = subjects
+        self.genAvail = genAvail
+        self.curAvail = self.genAvail
+        self.subjects = Subjects()
         super().__init__()
 
     #setters
@@ -29,8 +31,11 @@ class Account(ABC):
     def setEmail(self, email):
         self.email = email
 
-    def setAvail(self, avail):
-        self.avail = avail
+    def setGenAvail(self, genAvail):
+        self.genAvail = genAvail
+
+    def setCurAvail(self, curAvail):
+        self.curAvail = curAvail
 
     #getters
     def getName(self):
@@ -39,5 +44,8 @@ class Account(ABC):
     def getEmail(self):
         return self.email
 
-    def getAvail(self):
-        return self.avail    
+    def getGenAvail(self):
+        return self.genAvail
+
+    def getCurAvail(self):
+        return self.curAvail    
