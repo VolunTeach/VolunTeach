@@ -1,7 +1,12 @@
+#VolunTeach Tutoring Services
+
 from abc import ABC, abstractclassmethod
+
+#abstract class with subclasses Client and Tutor
 
 class Account(ABC):
 
+    #constructors
     def __init__(self):
         self.name = ""
         self.email = ""
@@ -14,6 +19,7 @@ class Account(ABC):
         self.avail = avail
         super().__init__()
 
+    #setters
     def setName(self, name):
         self.name = name
 
@@ -23,6 +29,7 @@ class Account(ABC):
     def setAvail(self, avail):
         self.avail = avail
 
+    #getters
     def getName(self):
         return self.name
 
