@@ -1,4 +1,5 @@
 from abc import ABC, abstractclassmethod
+from app.Subjects import Subjects
 
 class Account(ABC):
 
@@ -6,12 +7,14 @@ class Account(ABC):
         self.name = ""
         self.email = ""
         self.avail = [[0 for j in range(48)] for i in range(7)]
+        self.subjects = Subjects()
         super().__init__()
 
-    def __init__(self, name, email, avail):
+    def __init__(self, name, email, avail, subjects):
         self.name = name
         self.email = email
         self.avail = avail
+        self.subjects = subjects
         super().__init__()
 
     def setName(self, name):
