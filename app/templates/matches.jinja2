@@ -1,0 +1,16 @@
+{% extends 'layout.jinja2' %}
+
+{% block content %}
+<div class="formwrapper">
+    <h2 class="title">The client matched with:</h2>
+    {% for key, value in tutors.items() %}
+        {% if matched_tutor == key %}
+            <h3>{{ key }}</h3>
+            {% for x in value %}
+                <li>{{ x[0] }} - {{ x[1] }}</li>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
