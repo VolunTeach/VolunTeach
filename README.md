@@ -9,6 +9,6 @@ This repository houses the back-end and front-end code for the VolunTeach Tutori
 
 ## Use
 * Any time you install new packages run ```python -m pip freeze > requirements.txt``` before commiting
+* If you see changes in requirements.txt install them by running ```pip install -r requirements.txt```
 * Major changes should be in a new branch (will be reviewed and merged later with master)
 * Add to .gitignore when necessary
-
