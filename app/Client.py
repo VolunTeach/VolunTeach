@@ -7,18 +7,18 @@ class Client(Account):
 
     #constructors
     def __init__(self):
-        super(Tutor, self).__init__()
+        super(Client, self).__init__()
         self.tutors = ""
         self.duration = 0
 
     def __init__(self, name, email, avail, subjects, tutors, duration):
-        super(Tutor, self).__init__(name, email, avail)
+        super(Client, self).__init__(name, email, avail)
         self.tutors = tutors
         self.duration = duration
 
     #setters    
     def setTutors(self, tutors):
-        self.clients = clients
+        self.tutors = tutors
         
     def setDuration(self, duration):
         self.duration = duration
