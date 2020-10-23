@@ -5,7 +5,8 @@ This repository houses the back-end and front-end code for the VolunTeach Tutori
 * Clone repository
 * Navigate to project
 * Activate venv
-* Run ```python routes.py``` and open the localhost instance
+* First time you run you may have to do ```export FLASK_APP=main.py```
+* After that you can run with ```flask run``` and open the localhost instance
 
 ## Use
 * Any time you install new packages run ```python -m pip freeze > requirements.txt``` before commiting
