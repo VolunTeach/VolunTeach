@@ -26,3 +26,34 @@ class Client(Account):
 
     def removeTutor(self, tutor):
         self.tutors.pop(tutor.email)
+
+
+    def bestTutor(self, possTutors, subject, duration, frequency):
+        max = 0
+        for email in possTutors:
+            tutAvail = possTutors[email].getGenAvail()
+            currCount = 0
+            #counting the number of potential session windows between the client and tutor based off genAvail
+            for i in range(len(tutAvail)):
+                for j in range(len(tutAvail[i])):
+                    if tutAvail[i][j]:
+                        consec = 1
+                        #if the count does not seem right, double check this for loop
+                        #this counts the number of consecutive 30 minute time blocks are available starting at the current position
+                        for k in range(len(tutAvail[i]) - 1 - j):
+                            if not tutAvail[i][j+k]:
+                                break
+                            else:
+                                consec += 1
+                        #if this window of time is at least the length of the duration, the total count for the tutor increases
+                        if consec >= duration:
+                            currCount += 1
+            #decision for review is if this should be >= or just >
+            if currCount >= max:
+                max = currCount
+                bestTutor = possTutors[email]
+        #if there was a best tutor that could do ~frequency~ number of sessions, return the tutor
+        if max >= frequency:
+            return bestTutor
+        else:
+            return None
