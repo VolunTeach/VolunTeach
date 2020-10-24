@@ -36,15 +36,15 @@ class Client(Account):
             #counting the number of potential session windows between the client and tutor based off genAvail
             for i in range(len(tutAvail)):
                 for j in range(len(tutAvail[i])):
-                    if tutAvail[i][j]:
+                    if tutAvail[i][j] and self.genAvail[i][j]:
                         consec = 1
                         #if the count does not seem right, double check this for loop
                         #this counts the number of consecutive 30 minute time blocks are available starting at the current position
                         for k in range(len(tutAvail[i]) - 1 - j):
-                            if not tutAvail[i][j+k]:
-                                break
-                            else:
+                            if tutAvail[i][j+k] and self.getAvail[i][j+k]:
                                 consec += 1
+                            else:
+                                break
                         #if this window of time is at least the length of the duration, the total count for the tutor increases
                         if consec >= duration:
                             currCount += 1
@@ -53,6 +53,7 @@ class Client(Account):
                 max = currCount
                 bestTutor = possTutors[email]
         #if there was a best tutor that could do ~frequency~ number of sessions, return the tutor
+        #in the future it should configure in 
         if max >= frequency:
             return bestTutor
         else:
