@@ -30,11 +30,14 @@ class Client(Account):
 
     def bestTutor(self, possTutors, subject, duration, frequency):
         max = 0
+        maxDays = 0
         for email in possTutors:
             tutAvail = possTutors[email].getGenAvail()
             currCount = 0
+            daysOfWeek = 0
             #counting the number of potential session windows between the client and tutor based off genAvail
             for i in range(len(tutAvail)):
+                availToday = false
                 for j in range(len(tutAvail[i])):
                     if tutAvail[i][j] and self.genAvail[i][j]:
                         consec = 1
@@ -48,13 +51,19 @@ class Client(Account):
                         #if this window of time is at least the length of the duration, the total count for the tutor increases
                         if consec >= duration:
                             currCount += 1
+                            availToday = true
+                #daysofweek and availToday handle the logic for counting the days of the week they are available
+                if availToday:
+                    daysofWeek += 1
             #decision for review is if this should be >= or just >
             if currCount >= max:
                 max = currCount
                 bestTutor = possTutors[email]
-        #if there was a best tutor that could do ~frequency~ number of sessions, return the tutor
+                maxDays = daysOfWeek
+
+        #if there was a best tutor that could do ~frequency~ number of sessions per week assuming one session per day max, return the tutor
         #in the future it should configure in 
-        if max >= frequency:
+        if maxDays >= frequency:
             return bestTutor
         else:
             return None
