@@ -11,7 +11,7 @@ class Account(ABC):
     def __init__(self):
         self.name = ""
         self.email = ""
-        self.genAvail = [[0 for j in range(48)] for i in range(7)]
+        self.genAvail = [[False for j in range(48)] for i in range(7)]
         self.curAvail = self.genAvail
         self.subjects = Subjects()
         super().__init__()

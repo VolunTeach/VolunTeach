@@ -6,6 +6,8 @@ class Client(Account):
     def __init__(self):
         super().__init__()
         self.tutors = {}
+        self.duration = 0
+        self.frequency = 0
 
     def __init__(self, name, email, avail, subjects, tutors):
         super().__init__(name, email, avail, subjects)
@@ -37,7 +39,7 @@ class Client(Account):
             daysOfWeek = 0
             #counting the number of potential session windows between the client and tutor based off genAvail
             for i in range(len(tutAvail)):
-                availToday = false
+                availToday = False
                 for j in range(len(tutAvail[i])):
                     if tutAvail[i][j] and self.genAvail[i][j]:
                         consec = 1
@@ -51,7 +53,7 @@ class Client(Account):
                         #if this window of time is at least the length of the duration, the total count for the tutor increases
                         if consec >= duration:
                             currCount += 1
-                            availToday = true
+                            availToday = True
                 #daysofweek and availToday handle the logic for counting the days of the week they are available
                 if availToday:
                     daysofWeek += 1
@@ -66,4 +68,18 @@ class Client(Account):
         if maxDays >= frequency:
             return bestTutor
         else:
-            return None
+            return None 
+
+    @staticmethod
+    def getClient1():
+        avail1 = [[0 for j in range(48)] for i in range(7)]
+        for i in range(len(avail1)):
+            for j in range(26, 28):
+                avail1[i][j] = True
+            for k in range(32, 34):
+                avail1[i][k] = True
+            for l in range(38, 40):
+                avail1[i][l] = True
+            for m in range(44, 46):
+                avail1[i][m] = True
+        return __init__("Tutor 1", "tutor1@volunteachtutoring.org", avail1, "Algebra", None)
