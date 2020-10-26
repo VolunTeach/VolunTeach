@@ -1,4 +1,6 @@
 from app import app
+from app.Client import Client
+from app.Tutor import Tutor
 from app.forms import MatchForm
 from flask import Flask, url_for, render_template, redirect, request
 from collections import defaultdict
@@ -28,7 +30,22 @@ def display_availabilities():
 def display_match():
     client = mock_client_availabilities()
     tutors = mock_tutors_availabilities()
-    matched_tutor = 'Tutor 1'
+
+    #first attempt connected front end to back end
+    #one small step for man one giant leap for volunteach
+    client1 = Client.getClient1()
+    tutor1 = Tutor.getTutor1()
+    tutor2 = Tutor.getTutor2()
+    tutor3 = Tutor.getTutor3()
+    possTutors = {
+        tutor1.getEmail() : tutor1,
+        tutor2.getEmail() : tutor2,
+        tutor3.getEmail() : tutor3
+    }
+
+    
+
+    matched_tutor = client1.bestTutor(possTutors, "Algebra", 2, 1).getName()
     return render_template('matches.jinja2', matched_tutor=matched_tutor, tutors=tutors)
 
 def mock_client_availabilities():
