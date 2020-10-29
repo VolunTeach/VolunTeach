@@ -60,7 +60,7 @@ class Tutor(Account):
         avail3 = [[0 for j in range(48)] for i in range(7)]
         for i in range(len(avail3)):
             for j in range(26, 34):
-                avail3 = 1
+                avail3[i][j] = 1
         return Tutor("Tutor 3", "tutor3@volunteachtutoring.org", avail3, "Algebra", None, 4)
 
 
