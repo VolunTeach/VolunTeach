@@ -10,7 +10,7 @@ class Client(Account):
         self.frequency = 0
 
     def __init__(self, name, email, avail, subjects, tutors):
-        super().__init__(name, email, avail, subjects)
+        super().__init__(name, email, avail)
         self.tutors = tutors
         
     def getTutors(self):
@@ -35,18 +35,21 @@ class Client(Account):
         maxDays = 0
         for email in possTutors:
             tutAvail = possTutors[email].getGenAvail()
+            print("*************************\n\n\n")
+            print(tutAvail[0][0])
+            print("**********************")
             currCount = 0
             daysOfWeek = 0
             #counting the number of potential session windows between the client and tutor based off genAvail
-            for i in range(len(tutAvail)):
+            for i in range(7):
                 availToday = False
-                for j in range(len(tutAvail[i])):
+                for j in range(48):
                     if tutAvail[i][j] and self.genAvail[i][j]:
                         consec = 1
                         #if the count does not seem right, double check this for loop
                         #this counts the number of consecutive 30 minute time blocks are available starting at the current position
-                        for k in range(len(tutAvail[i]) - 1 - j):
-                            if tutAvail[i][j+k] and self.getAvail[i][j+k]:
+                        for k in range(48 - 1 - j):
+                            if tutAvail[i][j+k] and self.genAvail[i][j+k]:
                                 consec += 1
                             else:
                                 break
@@ -56,7 +59,7 @@ class Client(Account):
                             availToday = True
                 #daysofweek and availToday handle the logic for counting the days of the week they are available
                 if availToday:
-                    daysofWeek += 1
+                    daysOfWeek += 1
             #decision for review is if this should be >= or just >
             if currCount >= max:
                 max = currCount
@@ -75,11 +78,11 @@ class Client(Account):
         avail1 = [[0 for j in range(48)] for i in range(7)]
         for i in range(len(avail1)):
             for j in range(26, 28):
-                avail1[i][j] = True
+                avail1[i][j] = 1
             for k in range(32, 34):
-                avail1[i][k] = True
+                avail1[i][k] = 1
             for l in range(38, 40):
-                avail1[i][l] = True
+                avail1[i][l] = 1
             for m in range(44, 46):
-                avail1[i][m] = True
-        return __init__("Tutor 1", "tutor1@volunteachtutoring.org", avail1, "Algebra", None)
+                avail1[i][m] = 1
+        return Client("Client 1", "client1@volunteachtutoring.org", avail1, "Algebra", None)
