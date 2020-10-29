@@ -5,7 +5,7 @@ This repository houses the back-end and front-end code for the VolunTeach Tutori
 * Clone repository
 * Navigate to project
 * Activate venv
-* First time you run you may have to do ```export FLASK_APP=main.py``` on Mac or ```set FLASK_APP=main.py`` on Windows
+* First time you run you may have to do ```export FLASK_APP=main.py``` on Mac or ```set FLASK_APP=main.py``` on Windows
 * After that you can run with ```flask run``` and open the localhost instance
 * Currently, the landing page can be accessed via the "/available" subpage
 
