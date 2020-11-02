@@ -7,25 +7,21 @@ import unittest
 
 class Test(unittest.TestCase):
 
-    # def account_constructor_test(self):        
-    #     self.assertEqual('foo'.upper(), 'FOO')
+    # def test_account_constructor(self):        
+        
 
-    # def account_setters_test(self):
-    #     self.assertTrue('FOO'.isupper())
-    #     self.assertFalse('Foo'.isupper())
+    # def test_account_setters(self):
+        
 
-    # def account_ timeslot_test(self):
-    #     s = 'hello world'
-    #     self.assertEqual(s.split(), ['hello', 'world'])
-    #     # check that s.split fails when the separator is not a string
-    #     with self.assertRaises(TypeError):
-    #         s.split(2)
-
+    # def test_account_timeslot(self):
+        
     
     #functional tests
 
     #test 1: no tutors have any overlap at all - None
     def test_bestTutor_1(self):
+        print("\nRunning bestTutor Test 1...")
+
         #client data
         clientAvail = [[0 for j in range(48)] for i in range(7)]
         client = Client("Client", "client@volunteachtutoring.org", clientAvail, "Algebra", None)
@@ -80,6 +76,7 @@ class Test(unittest.TestCase):
 
     #test 2 - tutor 1 is better than tutor 2 who is better than tutor 3
     def test_bestTutor_2(self):
+        print("\nRunning bestTutor Test 2...")
         #client data
         clientAvail = [[0 for j in range(48)] for i in range(7)]
         client = Client("Client", "client@volunteachtutoring.org", clientAvail, "Algebra", None)
@@ -132,6 +129,7 @@ class Test(unittest.TestCase):
 
     #test 3 - tutor 1 and 2 are equal, and tutor 3 is worse
     def test_bestTutor_3(self):
+        print("\nRunning bestTutor Test 3...")
         #client data
         clientAvail = [[0 for j in range(48)] for i in range(7)]
         client = Client("Client", "client@volunteachtutoring.org", clientAvail, "Algebra", None)
@@ -185,6 +183,7 @@ class Test(unittest.TestCase):
 
     #test 4 - all tutors are equally good with some overlap
     def test_bestTutor_4(self):
+        print("\nRunning bestTutor Test 4...")
         #client data
         clientAvail = [[0 for j in range(48)] for i in range(7)]
         client = Client("Client", "client@volunteachtutoring.org", clientAvail, "Algebra", None)

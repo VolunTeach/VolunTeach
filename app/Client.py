@@ -63,9 +63,7 @@ class Client(Account):
                 max = currCount
                 bestTutor = possTutors[email]
                 maxDays = daysOfWeek
-            print(email)
-            print(currCount)
-            print(daysOfWeek)
+            
 
         #if there was a best tutor that could do ~frequency~ number of sessions per week assuming one session per day max, return the tutor
         #in the future it should configure in 
