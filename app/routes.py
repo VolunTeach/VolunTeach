@@ -6,9 +6,7 @@ from flask import Flask, url_for, render_template, redirect, request
 from collections import defaultdict
 from datetime import datetime, time
 
-@app.route('/')
-def home():
-    return "Hello World"
+
 
 """
 This URL shows a new client's available times and a dictionary of tutors. For now, these are hardcoded in
@@ -16,7 +14,7 @@ and are just here to serve the visual purpose of showing the times (also looks t
 Our scheduling algorithm will likely be a 48 x 7 boolean array and will have to be visually represented. 
 For demonstration purposes just populate the boolean array with values that correspond to the hardcoded availabilities.
 """
-@app.route('/available', methods=('GET', 'POST'))
+@app.route('/', methods=('GET', 'POST'))
 def display_availabilities():
     form = MatchForm()
     client = mock_client_availabilities()

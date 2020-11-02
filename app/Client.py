@@ -1,4 +1,4 @@
-from app.Account import Account
+from Account import Account
 import logging
 
 class Client(Account):
@@ -6,8 +6,6 @@ class Client(Account):
     def __init__(self):
         super().__init__()
         self.tutors = {}
-        self.duration = 0
-        self.frequency = 0
 
     def __init__(self, name, email, avail, subjects, tutors):
         super().__init__(name, email, avail)
@@ -30,7 +28,7 @@ class Client(Account):
         self.tutors.pop(tutor.email)
 
 
-    def bestTutor(self, possTutors, subject, duration, frequency):
+    def bestTutor(self, possTutors, duration, frequency):
         max = 0
         maxDays = 0
         for email in possTutors:

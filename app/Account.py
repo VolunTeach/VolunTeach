@@ -1,7 +1,7 @@
 #VolunTeach Tutoring Services
 
 from abc import ABC, abstractclassmethod
-from app.Subjects import Subjects
+
 
 #abstract class with subclasses Client and Tutor
 
@@ -11,9 +11,9 @@ class Account(ABC):
     def __init__(self):
         self.name = ""
         self.email = ""
-        self.genAvail = [[False for j in range(48)] for i in range(7)]
+        self.genAvail = [[0 for j in range(48)] for i in range(7)]
         self.curAvail = self.genAvail
-        self.subjects = Subjects()
+        # self.subjects = Subjects()
         super().__init__()
 
     def __init__(self, name, email, genAvail):
@@ -21,7 +21,7 @@ class Account(ABC):
         self.email = email
         self.genAvail = genAvail
         self.curAvail = self.genAvail
-        self.subjects = Subjects()
+        # self.subjects = Subjects()
         super().__init__()
 
     #setters
@@ -49,3 +49,20 @@ class Account(ABC):
 
     def getCurAvail(self):
         return self.curAvail    
+
+    #other methods
+
+    #day - day of the week (0 = Sunday, 6 = Saturday)
+    #start - double representing the first 30 minute time slot to be included (0.0 = 12:00 AM, 20.5 = 8:30 PM)
+    #end - double representing the first 30 minute time slot to not be included
+    def setTimeSlot(self, day, start, end, value):
+        start = start * 2
+        end = end * 2
+        for i in range(start, end):
+            genAvail[day][i] = value
+
+    
+
+
+
+            

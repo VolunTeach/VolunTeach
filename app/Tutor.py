@@ -1,6 +1,6 @@
 #VolunTeach Tutoring Services
 
-from app.Account import Account
+from Account import Account
 
 #this class inherits Account
 class Tutor(Account):
@@ -23,12 +23,18 @@ class Tutor(Account):
     def setMaxHours(self, maxHours):
         self.maxHours = maxHours
 
+    def setSubjects(self, subjects):
+        self.subjects = subjects
+
     #getters
     def getClients(self):
         return self.clients
 
     def getMaxHours(self):
         return self.maxHours
+
+    def getSubjects(self):
+        return self.subjects
 
     #hard code values for starter tutors
     #self is not a parameter because these are static functions
