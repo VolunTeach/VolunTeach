@@ -3,11 +3,9 @@ import logging
 
 class Client(Account):
     
-    def __init__(self):
-        super().__init__()
-        self.tutors = {}
+    
 
-    def __init__(self, name, email, avail, subjects, tutors):
+    def __init__(self, name = "", email = "", avail, subjects, tutors = {}):
         super().__init__(name, email, avail)
         self.tutors = tutors
         
@@ -63,7 +61,7 @@ class Client(Account):
                 max = currCount
                 bestTutor = possTutors[email]
                 maxDays = daysOfWeek
-            
+
 
         #if there was a best tutor that could do ~frequency~ number of sessions per week assuming one session per day max, return the tutor
         #in the future it should configure in 

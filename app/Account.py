@@ -7,16 +7,9 @@ from abc import ABC, abstractclassmethod
 
 class Account(ABC):
 
-    #constructors
-    def __init__(self):
-        self.name = ""
-        self.email = ""
-        self.genAvail = [[0 for j in range(48)] for i in range(7)]
-        self.curAvail = self.genAvail
-        # self.subjects = Subjects()
-        super().__init__()
+    #constructors   
 
-    def __init__(self, name, email, genAvail):
+    def __init__(self, name = "", email = "", genAvail = [[0 for j in range(48)] for i in range(7)]):
         self.name = name
         self.email = email
         self.genAvail = genAvail

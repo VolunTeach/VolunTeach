@@ -6,12 +6,9 @@ from Account import Account
 class Tutor(Account):
 
     #constructors
-    def __init__(self):
-        super(Tutor, self).__init__()
-        self.clients = ""
-        maxHours = 0
+    
 
-    def __init__(self, name, email, avail, subjects, clients, maxHours):
+    def __init__(self, name, email, avail, subjects = "", clients = {}, maxHours = 0):
         super(Tutor, self).__init__(name, email, avail)
         self.clients = clients
         self.maxHours = maxHours
