@@ -40,9 +40,11 @@ class Test(unittest.TestCase):
         client.setTimeSlot(5, 16.5, 22.5, 1)
 
         #tutor data
-        tutorAvail = [[0 for j in range(48)] for i in range(7)]
+        tutor1Avail = [[0 for j in range(48)] for i in range(7)]
+        tutor2Avail = [[0 for j in range(48)] for i in range(7)]
+        tutor3Avail = [[0 for j in range(48)] for i in range(7)]
 
-        tutor1 = Tutor("Tutor 1", "tutor1@volunteachtutoring.org", tutorAvail, "Algebra", None, 8)
+        tutor1 = Tutor("Tutor 1", "tutor1@volunteachtutoring.org", tutor1Avail, "Algebra", None, 8)
         tutor1.setTimeSlot(1, 16, 17, 1)
         tutor1.setTimeSlot(2, 14, 16, 1)
         tutor1.setTimeSlot(2, 17, 19, 1)
@@ -50,14 +52,14 @@ class Test(unittest.TestCase):
         tutor1.setTimeSlot(4, 17.5, 18.5, 1)
         tutor1.setTimeSlot(5, 12.5, 15, 1)
 
-        tutor2 = Tutor("Tutor 2", "tutor2@volunteachtutoring.org", tutorAvail, "Algebra", None, 6)
+        tutor2 = Tutor("Tutor 2", "tutor2@volunteachtutoring.org", tutor2Avail, "Algebra", None, 6)
         tutor2.setTimeSlot(2, 13.5, 17.5, 1)
         tutor2.setTimeSlot(2, 18, 20, 1)
         tutor2.setTimeSlot(4, 16.5, 18, 1)
         tutor2.setTimeSlot(6, 13.5, 15.5, 1)
         tutor2.setTimeSlot(6, 17, 23, 1)
         
-        tutor3 = Tutor("Tutor 3", "tutor3@volunteachtutoring.org", tutorAvail, "Algebra", None, 4)
+        tutor3 = Tutor("Tutor 3", "tutor3@volunteachtutoring.org", tutor3Avail, "Algebra", None, 4)
         tutor3.setTimeSlot(0, 16, 17.5, 1)
         tutor3.setTimeSlot(1, 16, 17, 1)
         tutor3.setTimeSlot(2, 12, 15, 1)
@@ -92,9 +94,11 @@ class Test(unittest.TestCase):
         client.setTimeSlot(5, 16.5, 22.5, 1)
 
         #tutor data
-        tutorAvail = [[0 for j in range(48)] for i in range(7)]
+        tutor1Avail = [[0 for j in range(48)] for i in range(7)]
+        tutor2Avail = [[0 for j in range(48)] for i in range(7)]
+        tutor3Avail = [[0 for j in range(48)] for i in range(7)]
 
-        tutor1 = Tutor("Tutor 1", "tutor1@volunteachtutoring.org", tutorAvail, "Algebra", None, 8)
+        tutor1 = Tutor("Tutor 1", "tutor1@volunteachtutoring.org", tutor1Avail, "Algebra", None, 8)
         tutor1.setTimeSlot(1, 14, 16, 1)
         tutor1.setTimeSlot(2, 14, 16, 1)
         tutor1.setTimeSlot(2, 17, 19, 1)
@@ -102,14 +106,14 @@ class Test(unittest.TestCase):
         tutor1.setTimeSlot(4, 18.5, 20.5, 1)
         tutor1.setTimeSlot(5, 12.5, 15, 1)
 
-        tutor2 = Tutor("Tutor 2", "tutor2@volunteachtutoring.org", tutorAvail, "Algebra", None, 6)
+        tutor2 = Tutor("Tutor 2", "tutor2@volunteachtutoring.org", tutor2Avail, "Algebra", None, 6)
         tutor2.setTimeSlot(2, 13.5, 17.5, 1)
         tutor2.setTimeSlot(2, 18, 20, 1)
         tutor2.setTimeSlot(4, 14, 20, 1)
         tutor2.setTimeSlot(6, 13.5, 15.5, 1)
         tutor2.setTimeSlot(6, 17, 23, 1)
         
-        tutor3 = Tutor("Tutor 3", "tutor3@volunteachtutoring.org", tutorAvail, "Algebra", None, 4)
+        tutor3 = Tutor("Tutor 3", "tutor3@volunteachtutoring.org", tutor3Avail, "Algebra", None, 4)
         tutor3.setTimeSlot(0, 16, 17.5, 1)
         tutor3.setTimeSlot(1, 16, 17, 1)
         tutor3.setTimeSlot(2, 12, 15, 1)
@@ -142,9 +146,11 @@ class Test(unittest.TestCase):
         client.setTimeSlot(5, 16.5, 22.5, 1)
 
         #tutor data
-        tutorAvail = [[0 for j in range(48)] for i in range(7)]
+        tutor1Avail = [[0 for j in range(48)] for i in range(7)]
+        tutor2Avail = [[0 for j in range(48)] for i in range(7)]
+        tutor3Avail = [[0 for j in range(48)] for i in range(7)]
 
-        tutor1 = Tutor("Tutor 1", "tutor1@volunteachtutoring.org", tutorAvail, "Algebra", None, 8)
+        tutor1 = Tutor("Tutor 1", "tutor1@volunteachtutoring.org", tutor1Avail, "Algebra", None, 8)
         tutor1.setTimeSlot(1, 14, 16, 1)
         tutor1.setTimeSlot(2, 14, 16, 1)
         tutor1.setTimeSlot(2, 17, 19, 1)
@@ -152,7 +158,7 @@ class Test(unittest.TestCase):
         tutor1.setTimeSlot(4, 18.5, 20.5, 1)
         tutor1.setTimeSlot(5, 12.5, 15, 1)
 
-        tutor2 = Tutor("Tutor 2", "tutor2@volunteachtutoring.org", tutorAvail, "Algebra", None, 6)
+        tutor2 = Tutor("Tutor 2", "tutor2@volunteachtutoring.org", tutor2Avail, "Algebra", None, 6)
         tutor2.setTimeSlot(1, 14, 16, 1)
         tutor2.setTimeSlot(2, 14, 16, 1)
         tutor2.setTimeSlot(2, 17, 19, 1)
@@ -160,7 +166,7 @@ class Test(unittest.TestCase):
         tutor2.setTimeSlot(4, 18.5, 20.5, 1)
         tutor2.setTimeSlot(5, 12.5, 15, 1)
         
-        tutor3 = Tutor("Tutor 3", "tutor3@volunteachtutoring.org", tutorAvail, "Algebra", None, 4)
+        tutor3 = Tutor("Tutor 3", "tutor3@volunteachtutoring.org", tutor3Avail, "Algebra", None, 4)
         tutor3.setTimeSlot(0, 16, 17.5, 1)
         tutor3.setTimeSlot(1, 16, 17, 1)
         tutor3.setTimeSlot(2, 12, 15, 1)
@@ -193,9 +199,11 @@ class Test(unittest.TestCase):
         client.setTimeSlot(5, 16.5, 22.5, 1)
 
         #tutor data
-        tutorAvail = [[0 for j in range(48)] for i in range(7)]
+        tutor1Avail = [[0 for j in range(48)] for i in range(7)]
+        tutor2Avail = [[0 for j in range(48)] for i in range(7)]
+        tutor3Avail = [[0 for j in range(48)] for i in range(7)]
 
-        tutor1 = Tutor("Tutor 1", "tutor1@volunteachtutoring.org", tutorAvail, "Algebra", None, 8)
+        tutor1 = Tutor("Tutor 1", "tutor1@volunteachtutoring.org", tutor1Avail, "Algebra", None, 8)
         tutor1.setTimeSlot(1, 14, 16, 1)
         tutor1.setTimeSlot(2, 14, 16, 1)
         tutor1.setTimeSlot(2, 17, 19, 1)
@@ -203,7 +211,7 @@ class Test(unittest.TestCase):
         tutor1.setTimeSlot(4, 18.5, 20.5, 1)
         tutor1.setTimeSlot(5, 12.5, 15, 1)
 
-        tutor2 = Tutor("Tutor 2", "tutor2@volunteachtutoring.org", tutorAvail, "Algebra", None, 6)
+        tutor2 = Tutor("Tutor 2", "tutor2@volunteachtutoring.org", tutor2Avail, "Algebra", None, 6)
         tutor2.setTimeSlot(1, 14, 16, 1)
         tutor2.setTimeSlot(2, 14, 16, 1)
         tutor2.setTimeSlot(2, 17, 19, 1)
@@ -211,7 +219,7 @@ class Test(unittest.TestCase):
         tutor2.setTimeSlot(4, 18.5, 20.5, 1)
         tutor2.setTimeSlot(5, 12.5, 15, 1)
         
-        tutor3 = Tutor("Tutor 3", "tutor3@volunteachtutoring.org", tutorAvail, "Algebra", None, 4)
+        tutor3 = Tutor("Tutor 3", "tutor3@volunteachtutoring.org", tutor3Avail, "Algebra", None, 4)
         tutor3.setTimeSlot(1, 14, 16, 1)
         tutor3.setTimeSlot(2, 14, 16, 1)
         tutor3.setTimeSlot(2, 17, 19, 1)
