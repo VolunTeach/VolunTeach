@@ -56,10 +56,10 @@ class Account(ABC):
     #start - double representing the first 30 minute time slot to be included (0.0 = 12:00 AM, 20.5 = 8:30 PM)
     #end - double representing the first 30 minute time slot to not be included
     def setTimeSlot(self, day, start, end, value):
-        start = start * 2
-        end = end * 2
+        start = int(start * 2)
+        end = int(end * 2)
         for i in range(start, end):
-            genAvail[day][i] = value
+            self.genAvail[day][i] = value
 
     
 
