@@ -1,22 +1,100 @@
-
 from Client import Client
 from Tutor import Tutor
+from Account import Account
 
 import unittest
 
-
 class Test(unittest.TestCase):
 
-    # def test_account_constructor(self):        
-        
+    """
+    Unit Tests:
+    The constructors, accessors, and mutators of the Account, Tutor, and Client classes are tested here.
+    """
 
-    # def test_account_setters(self):
-        
+    # Account class unit tests
+    def test_account_constructor(self):
+        genAvail = [[0 for j in range(48)] for i in range(7)]
+        account = Account("Account", "account@volunteachtutoring.org", genAvail)
 
-    # def test_account_timeslot(self):
+        self.assertEquals(account.getName(), "Account")
+        self.assertEquals(account.getEmail(), "account@volunteachtutoring.org")
+        self.assertEquals(account.getGenAvail(), genAvail)
         
-    
-    #functional tests
+    def test_account_setters(self):
+        genAvail = [[0 for j in range(48)] for i in range(7)]
+        updatedAvail = [[1 for j in range(48)] for i in range(7)]
+        account = Account("Account", "account@volunteachtutoring.org", genAvail)
+
+        account.setName("New")
+        account.setEmail("new@volunteachtutoring.org")
+        account.setGenAvail(updatedAvail)
+        account.setCurAvail(updatedAvail)
+
+        self.assertEquals(account.getName(), "New")
+        self.assertEquals(account.getEmail(), "new@volunteachtutoring.org")
+        self.assertEquals(account.getGenAvail(), updatedAvail)
+        self.assertEquals(account.getCurAvail(), updatedAvail)
+
+    def test_account_timeslot(self):
+        genAvail = [[0 for j in range(48)] for i in range(7)]
+        account = Account("Account", "account@volunteachtutoring.org", genAvail)
+
+        # Represents a time block on Sunday between 12 pm and 2 pm
+        account.setTimeSlot(0, 12, 14, 1)
+
+        # creating expected timeblock in another 24 hour, 30 minute interval matrix
+        expectedAvail = [[0 for j in range(48)] for i in range(7)]
+        expectedAvail[0][24] = 1
+        expectedAvail[0][25] = 1
+        expectedAvail[0][26] = 1
+        expectedAvail[0][27] = 1
+
+        self.assertEquals(account.getGenAvail(), expectedAvail)
+
+    # Tutor class unit tests
+    def test_tutor_constructor(self):
+        tutorAvail = [[0 for j in range(48)] for i in range(7)]
+        tutor = Tutor("Tutor", "tutor@volunteachtutoring.org", tutorAvail, "Algebra", None, 8)
+
+        self.assertEquals(tutor.getName(), "Tutor")
+        self.assertEquals(tutor.getEmail(), "tutor@volunteachtutoring.org")
+        self.assertIsNone(tutor.getClients())
+        self.assertEquals(tutor.getMaxHours(), 8)
+
+    def test_tutor_setters(self):
+        tutorAvail = [[0 for j in range(48)] for i in range(7)]
+        tutor = Tutor("Tutor", "tutor@volunteachtutoring.org", tutorAvail, "Algebra", None, 8)
+
+        tutor.setClients(["Client 1", "Client 2"])
+        tutor.setMaxHours(10)
+        tutor.setSubjects("Algebra 2")
+        
+        self.assertEquals(tutor.getClients(), ["Client 1", "Client 2"])
+        self.assertEquals(tutor.getMaxHours(), 10)
+        self.assertEquals(tutor.getSubjects(), "Algebra 2")
+
+    # Client class unit tests
+    def test_client_constructor(self):
+        clientAvail = [[0 for j in range(48)] for i in range(7)]
+        client = Client("Client", "client@volunteachtutoring.org", clientAvail, "Algebra", None)
+
+        self.assertIsNone(client.getTutors())
+
+    def test_client_tutor_relation(self):
+        testAvail = [[0 for j in range(48)] for i in range(7)]
+        client = Client("Client", "client@volunteachtutoring.org", testAvail, "Algebra", {})
+        tutor = Tutor("Tutor", "tutor@volunteachtutoring.org", testAvail, "Algebra", None, 8)
+
+        client.addTutor(tutor)
+        self.assertEquals(client.getTutors()['tutor@volunteachtutoring.org'], tutor)
+
+        client.removeTutor(tutor)
+        self.assertEquals(client.getTutors(), {})
+
+    """
+    Functional Tests:
+    The tutor-client scheduling algorithm is tested here.
+    """
 
     #test 1: no tutors have any overlap at all - None
     def test_bestTutor_1(self):
@@ -232,10 +310,6 @@ class Test(unittest.TestCase):
             tutor3.getEmail() : tutor3
         }
         self.assertEqual(client.bestTutor(tutors, 1, 2).getEmail(), "tutor3@volunteachtutoring.org")
-
-    #test 5 - all tutors are equally good but have overlap at slightly different times
-    # def bestTutor_test5(self):
-
 
 if __name__ == '__main__':    
     unittest.main()

@@ -5,7 +5,7 @@ class Client(Account):
     
     
 
-    def __init__(self, name = "", email = "", avail, subjects, tutors = {}):
+    def __init__(self, name = "", email = "", avail = "", subjects = "", tutors = {}):
         super().__init__(name, email, avail)
         self.tutors = tutors
         
@@ -16,8 +16,8 @@ class Client(Account):
         self.tutors = tutors
 
     def addTutor(self, tutor):
-        if not self.tutors.has_key(tutor.email):
-            tutors[tutor.email] = tutor
+        if tutor.email not in self.tutors:
+            self.tutors[tutor.email] = tutor
         
         else:
             logging.info("Tutor " + tutor.email + "was unable to be added to list. Reason: Email already exists in client list")

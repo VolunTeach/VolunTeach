@@ -1,12 +1,9 @@
-from app import app
-from app.Client import Client
-from app.Tutor import Tutor
-from app.forms import MatchForm
-from flask import Flask, url_for, render_template, redirect, request
+from Client import Client
+from Tutor import Tutor
+from forms import MatchForm
+from flask import Flask, url_for, render_template, redirect, request, Blueprint
 from collections import defaultdict
 from datetime import datetime, time
-
-
 
 """
 This URL shows a new client's available times and a dictionary of tutors. For now, these are hardcoded in

@@ -6,3 +6,5 @@ app.config.from_object('config.Config')
 from app import routes
 from .Tutor import Tutor
 from .Client import Client
+from .Account import Account
+from .forms import MatchForm
