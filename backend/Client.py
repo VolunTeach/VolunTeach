@@ -1,3 +1,5 @@
+#VolunTeach Tutoring Services
+
 from Account import Account
 import logging
 
@@ -73,13 +75,13 @@ class Client(Account):
     @staticmethod
     def getClient1():
         avail1 = [[0 for j in range(48)] for i in range(7)]
-        for i in range(len(avail1)):
-            for j in range(26, 28):
-                avail1[i][j] = 1
-            for k in range(32, 34):
-                avail1[i][k] = 1
-            for l in range(38, 40):
-                avail1[i][l] = 1
-            for m in range(44, 46):
-                avail1[i][m] = 1
+        # for i in range(len(avail1)):
+        #     for j in range(26, 28):
+        #         avail1[i][j] = 1
+        #     for k in range(32, 34):
+        #         avail1[i][k] = 1
+        #     for l in range(38, 40):
+        #         avail1[i][l] = 1
+        #     for m in range(44, 46):
+        #         avail1[i][m] = 1
         return Client("Client 1", "client1@volunteachtutoring.org", avail1, "Algebra", None)

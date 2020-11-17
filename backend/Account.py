@@ -54,6 +54,9 @@ class Account(ABC):
         for i in range(start, end):
             self.genAvail[day][i] = value
 
+
+    
+
     
 
 

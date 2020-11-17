@@ -1,6 +1,7 @@
 #VolunTeach Tutoring Services
 
 from Account import Account
+import json
 
 #this class inherits Account
 class Tutor(Account):
@@ -33,8 +34,12 @@ class Tutor(Account):
     def getSubjects(self):
         return self.subjects
 
+    # def getJSON(self):
+
+
     #hard code values for starter tutors
     #self is not a parameter because these are static functions
+    @staticmethod
     def getTutor1():
         avail1 = [[0 for j in range(48)] for i in range(7)]
         for i in range(len(avail1)):
@@ -48,6 +53,7 @@ class Tutor(Account):
                 avail1[i][m] = 1
         return Tutor("Tutor 1", "tutor1@volunteachtutoring.org", avail1, "Algebra", None, 8)
     
+    @staticmethod
     def getTutor2():
         avail2 = [[0 for j in range(48)] for i in range(7)]
         for i in range(len(avail2)):
@@ -59,6 +65,7 @@ class Tutor(Account):
                 avail2[i][l] = 1
         return Tutor("Tutor 2", "tutor2@volunteachtutoring.org", avail2, "Algebra", None, 6)
 
+    @staticmethod
     def getTutor3():
         avail3 = [[0 for j in range(48)] for i in range(7)]
         for i in range(len(avail3)):
