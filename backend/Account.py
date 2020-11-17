@@ -1,7 +1,7 @@
 #VolunTeach Tutoring Services
 
 from abc import ABC, abstractclassmethod
-
+import json
 
 #abstract class with subclasses Client and Tutor
 
@@ -45,6 +45,7 @@ class Account(ABC):
 
     #other methods
 
+    #setTimeSlot
     #day - day of the week (0 = Sunday, 6 = Saturday)
     #start - double representing the first 30 minute time slot to be included (0.0 = 12:00 AM, 20.5 = 8:30 PM)
     #end - double representing the first 30 minute time slot to not be included
@@ -53,6 +54,14 @@ class Account(ABC):
         end = int(end * 2)
         for i in range(start, end):
             self.genAvail[day][i] = value
+
+    #getJSON
+    #returns a JSON serializable version of the name and schedule information
+    def getJSON(self):
+        accDict = {'name': 'You matched with ' + self.name}
+        return json.dumps(accDict, indent = 4)
+
+
 
     
 

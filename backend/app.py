@@ -1,8 +1,11 @@
+#VolunTeach Tutoring Services
+
 from Client import Client
 from Tutor import Tutor
 from flask import Flask, url_for, render_template, redirect, request, Blueprint
 from collections import defaultdict
 from datetime import datetime, time
+import json
 
 app = Flask(__name__)
 
@@ -17,7 +20,7 @@ def display_match():
 
     #first attempt connected front end to back end
     #one small step for man one giant leap for volunteach
-    client1 = Client.getClient1()
+    #client1 = Client.getClient1()
     tutor1 = Tutor.getTutor1()
     tutor2 = Tutor.getTutor2()
     tutor3 = Tutor.getTutor3()
@@ -29,15 +32,40 @@ def display_match():
 
     data = "Success"
 
+    #data = {}
     if request.method == "POST":
         data = request.get_json()
-    
-    if request.method == "GET":
-        return data
+        timeRanges = data['schedule']
+        client1 = Client.getClient1()
+        client1.setName("Client 1")
+        client1.setEmail("client1@volunteachtutoring.org")
+        
 
+        for range in timeRanges:
+            lowerBoundDT = datetime.datetime.strptime(range[0], '%Y-%m-%dT%H:%M:%S.%fZ')
+            upperBoundDT = datetime.datetime.strptime(range[1], '%Y-%m-%dT%H:%M:%S.%fZ')
+            #get the upper and lower bound times so they can be fed into a client schedule
+            day = lowerBoundDT.weekday()
+            lowerHour = lowerBoundDT.hour - 1
+            lowerMin = lowerBoundDT.minute
+            lowerTime = lowerHour + (lowerMin / 60.0)
+            upperHour = upperBoundDT.hour - 1
+            upperMin = upperBoundDT.minute
+            upperTime = upperHour + (upperMin / 60.0)
+            client1.setTimeSlot(day, lowerTime, upperTime, 1)
+        
+        #build client object with this data
+        #need to parse this data to get day of week and time ranges
+        print(data)
+
+    #client1 = Client.getClient1()
+    
     matched_tutor = client1.bestTutor(possTutors, 2, 1).getName()
-    print(data)
-    return data
+    print(" MATCHED WITH " + matched_tutor.getName())
+    #return the JSON format of matched_tutor
+    return matched_tutor.getJSON()
+    #return JSON of tutor with time ranges
+    
 
 def mock_client_availabilities():
     client = []
