@@ -5,6 +5,7 @@ from Tutor import Tutor
 from flask import Flask, url_for, render_template, redirect, request, Blueprint
 from collections import defaultdict
 from datetime import datetime, time
+from dateutil import tz
 import json
 
 app = Flask(__name__)
@@ -42,17 +43,35 @@ def display_match():
         
 
         for range in timeRanges:
-            lowerBoundDT = datetime.datetime.strptime(range[0], '%Y-%m-%dT%H:%M:%S.%fZ')
-            upperBoundDT = datetime.datetime.strptime(range[1], '%Y-%m-%dT%H:%M:%S.%fZ')
+            # METHOD 1: Hardcode zones:
+            from_zone = tz.gettz('UTC')
+            to_zone = tz.gettz('America/Chicago')
+
+            # utc = datetime.utcnow()
+            utc0 = datetime.strptime(range[0], '%Y-%m-%dT%H:%M:%S.%fZ')
+            utc1 = datetime.strptime(range[1], '%Y-%m-%dT%H:%M:%S.%fZ')
+
+            # Tell the datetime object that it's in UTC time zone since 
+            # datetime objects are 'naive' by default
+            utc0 = utc0.replace(tzinfo=from_zone)
+            utc1 = utc1.replace(tzinfo=from_zone)
+
+            # Convert time zone
+            lowerBoundDT = utc0.astimezone(to_zone)
+            upperBoundDT = utc1.astimezone(to_zone)
+
             #get the upper and lower bound times so they can be fed into a client schedule
-            day = lowerBoundDT.weekday()
-            lowerHour = lowerBoundDT.hour - 1
+            day = adjustDay(lowerBoundDT.weekday())
+            lowerHour = lowerBoundDT.hour
             lowerMin = lowerBoundDT.minute
             lowerTime = lowerHour + (lowerMin / 60.0)
-            upperHour = upperBoundDT.hour - 1
+            upperHour = upperBoundDT.hour
             upperMin = upperBoundDT.minute
             upperTime = upperHour + (upperMin / 60.0)
             client1.setTimeSlot(day, lowerTime, upperTime, 1)
+            print(day)
+            print(lowerTime)
+            print(upperTime)
         
         #build client object with this data
         #need to parse this data to get day of week and time ranges
@@ -60,12 +79,16 @@ def display_match():
 
     #client1 = Client.getClient1()
     
-    matched_tutor = client1.bestTutor(possTutors, 2, 1).getName()
+    matched_tutor = client1.bestTutor(possTutors, 2, 1)
     print(" MATCHED WITH " + matched_tutor.getName())
     #return the JSON format of matched_tutor
     return matched_tutor.getJSON()
     #return JSON of tutor with time ranges
     
+def adjustDay(dayOfWeek):
+    return (dayOfWeek + 1) % 7
+    
+
 
 def mock_client_availabilities():
     client = []
