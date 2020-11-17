@@ -17,7 +17,7 @@ def hello():
 
 @app.route('/api/schedule', methods=('GET', 'POST'))
 def display_match():
-    tutors = mock_tutors_availabilities()
+    # tutors = mock_tutors_availabilities()
 
     #first attempt connected front end to back end
     #one small step for man one giant leap for volunteach
