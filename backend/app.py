@@ -30,8 +30,7 @@ def display_match():
         tutor3.getEmail() : tutor3
     }
 
-    if request.method == "GET":
-        print("test")
+    data = "Success"
 
     #data = {}
     if request.method == "POST":
