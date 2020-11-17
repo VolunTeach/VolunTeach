@@ -1,7 +1,7 @@
 #VolunTeach Tutoring Services
 
 from Account import Account
-import json
+
 
 #this class inherits Account
 class Tutor(Account):
@@ -33,8 +33,7 @@ class Tutor(Account):
 
     def getSubjects(self):
         return self.subjects
-
-    # def getJSON(self):
+    
 
 
     #hard code values for starter tutors

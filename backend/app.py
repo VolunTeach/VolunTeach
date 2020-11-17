@@ -50,7 +50,7 @@ def display_match():
             lowerHour = lowerBoundDT.hour - 1
             lowerMin = lowerBoundDT.minute
             lowerTime = lowerHour + (lowerMin / 60.0)
-            upperHour = upperBoundDT.hour -1
+            upperHour = upperBoundDT.hour - 1
             upperMin = upperBoundDT.minute
             upperTime = upperHour + (upperMin / 60.0)
             client1.setTimeSlot(day, lowerTime, upperTime, 1)
@@ -63,8 +63,8 @@ def display_match():
     
     matched_tutor = client1.bestTutor(possTutors, 2, 1).getName()
     print(" MATCHED WITH " + matched_tutor.getName())
-    tutorData = {}
-    return tutorData
+    #return the JSON format of matched_tutor
+    return matched_tutor.getJSON()
     #return JSON of tutor with time ranges
     
 
