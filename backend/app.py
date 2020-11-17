@@ -1,29 +1,18 @@
 from Client import Client
 from Tutor import Tutor
-from forms import MatchForm
 from flask import Flask, url_for, render_template, redirect, request, Blueprint
 from collections import defaultdict
 from datetime import datetime, time
 
-"""
-This URL shows a new client's available times and a dictionary of tutors. For now, these are hardcoded in
-and are just here to serve the visual purpose of showing the times (also looks terrible, but fine for now).
-Our scheduling algorithm will likely be a 48 x 7 boolean array and will have to be visually represented. 
-For demonstration purposes just populate the boolean array with values that correspond to the hardcoded availabilities.
-"""
-@app.route('/', methods=('GET', 'POST'))
-def display_availabilities():
-    form = MatchForm()
-    client = mock_client_availabilities()
-    tutors = mock_tutors_availabilities()
-    if request.method == 'POST':
-        return redirect(url_for('display_match'))
+app = Flask(__name__)
 
-    return render_template('available.jinja2', client=client, tutors=tutors, form=form, template='form-template')
 
-@app.route('/display_match', methods=('GET', 'POST'))
+@app.route('/')
+def hello():
+    return "Hello World!"
+
+@app.route('/api/schedule', methods=('GET', 'POST'))
 def display_match():
-    client = mock_client_availabilities()
     tutors = mock_tutors_availabilities()
 
     #first attempt connected front end to back end
@@ -38,7 +27,12 @@ def display_match():
         tutor3.getEmail() : tutor3
     }
 
-    
+    if request.method == "GET":
+        print("test")
+
+    if request.method == "POST":
+        data = request.get_json()
+        print(data)
 
     matched_tutor = client1.bestTutor(possTutors, "Algebra", 2, 1).getName()
     return render_template('matches.jinja2', matched_tutor=matched_tutor, tutors=tutors)
@@ -78,3 +72,6 @@ def mock_tutors_availabilities():
     tutors['Tutor 3'].append(['01:00:00', '05:00:00'])
 
     return tutors
+
+if __name__ == '__main__':
+    app.run()

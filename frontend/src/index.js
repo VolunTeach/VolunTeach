@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { TimeGridScheduler, classes } from "react-weekly-schedule";
+import { sendSchedule } from './services/ScheduleService.js';
 import "react-weekly-schedule/index.css";
 
 const rangeStrings = [
-  ["2019-03-03T22:45:00.000Z", "2019-03-04T01:15:00.000Z"],
-  ["2019-03-04T22:15:00.000Z", "2019-03-05T01:00:00.000Z"],
-  ["2019-03-05T22:00:00.000Z", "2019-03-06T01:00:00.000Z"],
-  ["2019-03-06T22:00:00.000Z", "2019-03-07T01:00:00.000Z"],
-  ["2019-03-07T05:30:00.000Z", "2019-03-07T10:00:00.000Z"],
-  ["2019-03-08T22:00:00.000Z", "2019-03-09T01:00:00.000Z"],
-  ["2019-03-09T22:00:00.000Z", "2019-03-10T01:00:00.000Z"]
 ];
 
 const defaultSchedule = rangeStrings.map(range =>
   range.map(dateString => new Date(dateString))
 );
+
 
 function App() {
   const [schedule, setSchedule] = useState(defaultSchedule);
@@ -25,7 +20,7 @@ function App() {
       className="root"
       style={{
         width: "100vw",
-        height: "600px",
+        height: "100vw",
         "--cell-height": "20px",
         "--cell-width": "50px"
       }}
@@ -40,7 +35,12 @@ function App() {
         verticalPrecision={30}
         cellClickPrecision={60}
       />
+      <button onClick={() => sendSchedule(schedule)}>
+         Match with Tutor
+      </button>
+
     </div>
+
   );
 }
 

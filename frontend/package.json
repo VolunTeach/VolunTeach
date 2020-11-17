@@ -12,6 +12,8 @@
     "react-weekly-schedule": "^0.0.0-development",
     "web-vitals": "^0.2.4"
   },
+  "proxy": "http://localhost:5000/",
+  "secure": false,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
