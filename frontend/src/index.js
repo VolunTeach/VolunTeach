@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import { sendSchedule, getSchedule} from "./services/ScheduleService.js";
 import { TimeGridScheduler, classes } from "react-weekly-schedule";
-import { sendSchedule } from './services/ScheduleService.js';
 import "react-weekly-schedule/index.css";
 
 const rangeStrings = [
@@ -15,12 +15,17 @@ const defaultSchedule = rangeStrings.map(range =>
 function App() {
   const [schedule, setSchedule] = useState(defaultSchedule);
 
+  const handleClick = () => {
+    sendSchedule(schedule)
+      .then(response => alert(JSON.stringify(response)))
+  }
+
   return (
     <div
       className="root"
       style={{
         width: "100vw",
-        height: "100vw",
+        height: "50vw",
         "--cell-height": "20px",
         "--cell-width": "50px"
       }}
@@ -35,8 +40,8 @@ function App() {
         verticalPrecision={30}
         cellClickPrecision={60}
       />
-      <button onClick={() => sendSchedule(schedule)}>
-         Match with Tutor
+      <button onClick={handleClick}>
+         Send Schedule
       </button>
 
     </div>

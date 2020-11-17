@@ -6,3 +6,9 @@ export async function sendSchedule(data) {
       })
     return await response.json();
 }
+
+export async function getMatch() {
+
+  const response = await fetch('/api/schedule');
+  return await response.json();
+}

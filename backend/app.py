@@ -27,15 +27,17 @@ def display_match():
         tutor3.getEmail() : tutor3
     }
 
-    if request.method == "GET":
-        print("test")
+    data = "Success"
 
     if request.method == "POST":
         data = request.get_json()
-        print(data)
+    
+    if request.method == "GET":
+        return data
 
-    matched_tutor = client1.bestTutor(possTutors, "Algebra", 2, 1).getName()
-    return render_template('matches.jinja2', matched_tutor=matched_tutor, tutors=tutors)
+    matched_tutor = client1.bestTutor(possTutors, 2, 1).getName()
+    print(data)
+    return data
 
 def mock_client_availabilities():
     client = []
