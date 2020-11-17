@@ -17,7 +17,7 @@ function App() {
 
   const handleClick = () => {
     sendSchedule(schedule)
-      .then(response => alert(JSON.stringify(response)))
+      .then(response => alert(JSON.stringify(response["name"])))
   }
 
   return (
