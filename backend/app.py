@@ -16,7 +16,7 @@ def hello():
     return "Hello World!"
 
 @app.route('/api/schedule', methods=('GET', 'POST'))
-def display_match():
+def display_match():   
     # tutors = mock_tutors_availabilities()
 
     #first attempt connected front end to back end
@@ -80,6 +80,10 @@ def display_match():
     #client1 = Client.getClient1()
     
     matched_tutor = client1.bestTutor(possTutors, 2, 1)
+    if (matched_tutor is None):
+        print("NO MATCHED TUTORS")
+        return  Tutor.nullJSON()
+
     print(" MATCHED WITH " + matched_tutor.getName())
     #return the JSON format of matched_tutor
     return matched_tutor.getJSON()

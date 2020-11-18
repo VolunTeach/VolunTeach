@@ -64,6 +64,12 @@ class Account(ABC):
         return json.dumps(accDict, indent = 4)
 
 
+    #nullJSON
+    #returns a JSON serializable version of the scenario where there is no matched tutor
+    @staticmethod
+    def nullJSON():
+        accDict = {'name': 'No matched tutors'}
+        return json.dumps(accDict, indent = 4)
 
     
 
