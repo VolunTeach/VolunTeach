@@ -27,6 +27,14 @@ class Client(Account):
     def removeTutor(self, tutor):
         self.tutors.pop(tutor.email)
 
+    def getOverlap(self, tutor):
+        overlap = [[0 for j in range(48)] for i in range(7)]
+        for i in range(7):
+            for j in range(48):
+                if (self.genAvail[i][j] is 1 and tutor.genAvail[i][j] is 1):
+                    overlap[i][j] = 1
+        return overlap
+
 
     def bestTutor(self, possTutors, duration, frequency):
         max = 0
