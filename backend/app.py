@@ -63,7 +63,7 @@ def display_match():
     matched_tutor = client1.bestTutor(possTutors, 2, 1).getName()
     print(" MATCHED WITH " + matched_tutor.getName())
     #return the JSON format of matched_tutor
-    return matched_tutor.getJSON()
+    return client1.getMatchJSON(matched_tutor)
     #return JSON of tutor with time ranges
     
 
