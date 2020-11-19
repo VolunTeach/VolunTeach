@@ -26,6 +26,10 @@ class Client(Account):
 
     def removeTutor(self, tutor):
         self.tutors.pop(tutor.email)
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
 
 
     def bestTutor(self, possTutors, duration, frequency):
