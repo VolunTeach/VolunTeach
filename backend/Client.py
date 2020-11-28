@@ -5,8 +5,6 @@ import logging
 
 class Client(Account):
     
-    
-
     def __init__(self, name = "", email = "", avail = "", subjects = "", tutors = {}):
         super().__init__(name, email, avail)
         self.tutors = tutors

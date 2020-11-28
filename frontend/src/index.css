@@ -1,13 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* TODO: Test Montserrat and background color */
+  font-family: 'Montserrat', sans-serif;
+  /*-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+    */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: hsl(198, 76%, 52%);
 }
 
-code {
+button {
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 1.8rem 2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Not sure if the below section is being used? */
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */

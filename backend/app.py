@@ -37,6 +37,9 @@ def display_match():
     if request.method == "POST":
         data = request.get_json()
         timeRanges = data['schedule']
+        duration = data['duration']
+        frequency = data['frequency']
+
         client1 = Client.getClient1()
         client1.setName("Client 1")
         client1.setEmail("client1@volunteachtutoring.org")
@@ -79,7 +82,7 @@ def display_match():
 
     #client1 = Client.getClient1()
     
-    matched_tutor = client1.bestTutor(possTutors, 2, 1)
+    matched_tutor = client1.bestTutor(possTutors, duration, frequency)
     if (matched_tutor is None):
         print("NO MATCHED TUTORS")
         return  Tutor.nullJSON()
