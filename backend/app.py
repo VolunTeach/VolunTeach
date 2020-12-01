@@ -15,7 +15,7 @@ app = Flask(__name__)
 cred = credentials.Certificate('key.json')
 default_app = initialize_app(cred)
 db = firestore.client()
-todo_ref = db.collection('todos')
+todo_ref = db.collection('Clients')
 
 @app.route('/')
 def hello():
