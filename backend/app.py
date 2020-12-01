@@ -96,6 +96,10 @@ def display_match():
     try:
         stored = matrix_to_fb_data(data["schedule"])
         data["schedule"] = stored
+        if (matched_tutor != None):
+            data["matched-tutor"] = matched_tutor.getEmail()
+        else:
+            data["matched-tutor"] = "NO MATCH"
         todo_ref.document(client1.getEmail()).set(data)
     except Exception as e:
         return f"An Error Occured: {e}"

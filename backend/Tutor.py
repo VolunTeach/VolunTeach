@@ -24,6 +24,9 @@ class Tutor(Account):
     def setSubjects(self, subjects):
         self.subjects = subjects
 
+    def setEmail(self, email):
+        self.email = email
+
     #getters
     def getClients(self):
         return self.clients
@@ -33,6 +36,9 @@ class Tutor(Account):
 
     def getSubjects(self):
         return self.subjects
+
+    def getEmail(self):
+        return self.email
     
 
 
