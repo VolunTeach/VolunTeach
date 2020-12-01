@@ -2,7 +2,8 @@
 
 from Client import Client
 from Tutor import Tutor
-from flask import Flask, url_for, render_template, redirect, request, Blueprint
+from flask import Flask, url_for, render_template, redirect, request, jsonify, Blueprint
+from firebase_admin import credentials, firestore, initialize_app
 from collections import defaultdict
 from datetime import datetime, time
 from dateutil import tz
@@ -10,6 +11,11 @@ import json
 
 app = Flask(__name__)
 
+# Initialize Firestore DB
+cred = credentials.Certificate('key.json')
+default_app = initialize_app(cred)
+db = firestore.client()
+todo_ref = db.collection('todos')
 
 @app.route('/')
 def hello():
@@ -37,8 +43,8 @@ def display_match():
     if request.method == "POST":
         data = request.get_json()
         timeRanges = data['schedule']
-        duration = data['duration']
-        frequency = data['frequency']
+        duration = int(data['duration'])
+        frequency = int(data['frequency'])
 
         client1 = Client.getClient1()
         client1.setName("Client 1")
@@ -83,19 +89,33 @@ def display_match():
     #client1 = Client.getClient1()
     
     matched_tutor = client1.bestTutor(possTutors, duration, frequency)
+
+     # save into database
+    try:
+        # implement id with email address in the future
+        # id = request.json['id']
+        stored = matrix_to_fb_data(data["schedule"])
+        data["schedule"] = stored
+        todo_ref.document(client1.getName()).set(data)
+    except Exception as e:
+        return f"An Error Occured: {e}"
+
     if (matched_tutor is None):
         print("NO MATCHED TUTORS")
         return  Tutor.nullJSON()
 
     print(" MATCHED WITH " + matched_tutor.getName())
+
     #return the JSON format of matched_tutor
     return matched_tutor.getJSON()
-    #return JSON of tutor with time ranges
+    #return JSON of tutor with time ranges    
     
 def adjustDay(dayOfWeek):
     return (dayOfWeek + 1) % 7
     
 
+def matrix_to_fb_data(matrix):
+    return [{'0': row} for row in matrix]
 
 def mock_client_availabilities():
     client = []
