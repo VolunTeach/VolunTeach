@@ -41,6 +41,7 @@ coverage.xml
 .mr.developer.cfg
 .project
 .pydevproject
+backend/key.json
 
 # Rope
 .ropeproject
