@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { sendSchedule, getSchedule} from "./services/ScheduleService.js";
 import { TimeGridScheduler, classes } from "react-weekly-schedule";
 import "react-weekly-schedule/index.css";
+import "./index.css"
 
 const rangeStrings = [
 ];
@@ -22,10 +23,12 @@ function App() {
 
   const handleClick = () => {
     var durationEle = document.getElementById("duration");
-    duration = durationEle.options[durationEle.selectedIndex].text.parseFloat();
+    console.log(durationEle.options[durationEle.selectedIndex].text);
+    duration = parseFloat(durationEle.options[durationEle.selectedIndex].text);
 
     var freqEle = document.getElementById("frequency");
-    frequency = freqEle.options[freqEle.selectedIndex].text.parseInt();
+    console.log(freqEle.options[freqEle.selectedIndex].text);
+    frequency = parseInt(freqEle.options[freqEle.selectedIndex].text);
 
     // Convert hours to 30-minute sections
     duration *= 2;
@@ -63,7 +66,6 @@ function App() {
         cellClickPrecision={60}
       />
 
-      // TODO: TEST THIS!!!!!!!!!
       <label for="duration">Session Duration (hours):</label>
       <select name="duration" id="duration">
         <option value="1">1</option>
@@ -73,7 +75,6 @@ function App() {
         <option value="3">3</option>
       </select>
 
-      // TODO: TEST THIS!!!!
       <label for="frequency">Session Frequency (per week):</label>
       <select name="frequency" id="frequency">
         <option value="1">1</option>
