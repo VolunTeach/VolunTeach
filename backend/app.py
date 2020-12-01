@@ -43,12 +43,14 @@ def display_match():
     if request.method == "POST":
         data = request.get_json()
         timeRanges = data['schedule']
+        email = data['email']
+        print(email)
         duration = int(data['duration'])
         frequency = int(data['frequency'])
 
         client1 = Client.getClient1()
         client1.setName("Client 1")
-        client1.setEmail("client1@volunteachtutoring.org")
+        client1.setEmail(email)
         
 
         for range in timeRanges:
@@ -90,13 +92,11 @@ def display_match():
     
     matched_tutor = client1.bestTutor(possTutors, duration, frequency)
 
-     # save into database
+    # save into database
     try:
-        # implement id with email address in the future
-        # id = request.json['id']
         stored = matrix_to_fb_data(data["schedule"])
         data["schedule"] = stored
-        todo_ref.document(client1.getName()).set(data)
+        todo_ref.document(client1.getEmail()).set(data)
     except Exception as e:
         return f"An Error Occured: {e}"
 
