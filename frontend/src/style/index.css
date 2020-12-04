@@ -2,12 +2,7 @@
 
 body {
   margin: 0;
-  /* TODO: Test Montserrat and background color */
   font-family: 'Montserrat', sans-serif;
-  /*-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: hsl(198, 76%, 52%);
@@ -23,10 +18,11 @@ button {
   line-height: 1;
   font-size: 0.75rem;
   font-weight: 600;
+  border: none;
+  margin: 5px;
 }
 
-/* Not sure if the below section is being used? */
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+br {
+  display: block;
+  margin: 10px 0;
+}
